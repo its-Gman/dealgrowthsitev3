@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DealGrowth — We Prospect. They Close.</title>
+    <title>DealGrowth — More Closed Deals. Less Prospecting.</title>
+    <meta name="description" content="We run your outbound — email, LinkedIn, voice — and track every signal. Your producers, advisors, and loan officers step into meetings that are already warm. Fully compliant. Audit-ready. No added headcount.">
+    <meta property="og:title" content="DealGrowth — More Closed Deals. Less Prospecting.">
+    <meta property="og:description" content="We run your outbound — email, LinkedIn, voice — and track every signal. Your producers, advisors, and loan officers step into meetings that are already warm. Fully compliant. Audit-ready. No added headcount.">
+    <meta property="og:image" content="https://dealgrowth.ai/assets/favicon%20large.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon%20large.png">
+    <link rel="apple-touch-icon" href="assets/favicon%20large.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -80,10 +88,10 @@
             transition: opacity 1.2s var(--ease-out), visibility 1.2s;
         }
         .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-        .loader img { height: 64px; opacity: 0; animation: loaderIn 0.8s var(--ease-out) 0.3s forwards; }
+        .loader img { height: 88px; opacity: 0; animation: loaderIn 0.8s var(--ease-out) 0.3s forwards; }
         @keyframes loaderIn { to { opacity: 0.9; } }
         .loader-ring {
-            position: absolute; width: 100px; height: 100px;
+            position: absolute; width: 120px; height: 120px;
             border: 1px solid var(--border); border-top-color: var(--accent);
             border-radius: 50%; animation: loaderSpin 1s linear infinite;
             opacity: 0.5;
@@ -95,7 +103,7 @@
          * ===================================================================== */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 0 48px; height: 80px;
+            padding: 0 48px; height: 100px;
             display: flex; align-items: center; justify-content: space-between;
             transition: all 0.6s var(--ease-out);
         }
@@ -104,7 +112,7 @@
             backdrop-filter: blur(40px) saturate(1.2);
             -webkit-backdrop-filter: blur(40px) saturate(1.2);
         }
-        nav .logo img { height: 52px; display: block; opacity: 0.9; transition: opacity 0.3s, filter 0.3s; }
+        nav .logo img { height: 72px; display: block; opacity: 0.9; transition: opacity 0.3s, filter 0.3s; }
         nav .logo:hover img { opacity: 1; filter: drop-shadow(0 0 20px rgba(46,204,113,0.3)); }
         .nav-links { display: flex; gap: 40px; list-style: none; }
         .nav-links a {
@@ -162,7 +170,7 @@
         @media (max-width: 900px) {
             .nav-links, .nav-right .nav-cta { display: none; }
             .hamburger { display: block; }
-            nav { padding: 0 24px; height: 72px; }
+            nav { padding: 0 24px; height: 88px; }
         }
 
         /* =====================================================================
@@ -190,7 +198,7 @@
         .hero h1 {
             font-family: var(--font-serif);
             font-size: clamp(52px, 9vw, 130px);
-            font-weight: 400; line-height: 0.98;
+            font-weight: 400; line-height: 1.05;
             letter-spacing: -0.035em; color: var(--text);
             margin-bottom: 36px;
             opacity: 0; transform: translateY(60px);
@@ -255,7 +263,6 @@
             display: grid; grid-template-columns: repeat(6, 1fr);
             border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
             background: rgba(10, 20, 12, 0.5);
-            backdrop-filter: blur(10px);
         }
         .stat-item {
             padding: 52px 20px; text-align: center;
@@ -596,7 +603,7 @@
         .footer-border { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); position: relative; z-index: 2; }
         footer { padding: 100px 48px 48px; position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 80px; }
-        .footer-brand img { height: 52px; opacity: 0.85; margin-bottom: 24px; }
+        .footer-brand img { height: 72px; opacity: 0.85; margin-bottom: 24px; }
         .footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 300px; }
         .footer-col h4 {
             font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
@@ -684,7 +691,7 @@
 <section class="hero" id="hero">
     <div class="hero-vignette"></div>
     <div class="hero-content">
-        <div class="hero-eyebrow">Your Outbound, Autonomous</div>
+        <div class="hero-eyebrow">Fully Autonomous Outbound</div>
         <h1>More Closed Deals.<br><em>Less Prospecting.</em></h1>
         <p class="hero-desc">We run your outbound — email, LinkedIn, voice — and track every signal. Your producers, advisors, and loan officers step into meetings that are already warm. Fully compliant. Audit-ready. More deals per rep. No added headcount.</p>
         <div class="hero-actions">
