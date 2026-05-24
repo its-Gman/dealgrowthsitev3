@@ -708,12 +708,12 @@
 <!-- Stats -->
 <section class="stats-section">
     <div class="stats-inner">
-        <div class="stat-item"><div class="stat-value" data-count="2400000" data-prefix="$" data-suffix="M">$0</div><div class="stat-label">Avg New Revenue</div></div>
-        <div class="stat-item"><div class="stat-value" data-count="312" data-prefix="+" data-suffix="%">+0%</div><div class="stat-label">Lead Volume</div></div>
-        <div class="stat-item"><div class="stat-value" data-count="60" data-suffix="">0</div><div class="stat-label">Days to Results</div></div>
-        <div class="stat-item"><div class="stat-value" data-count="94" data-suffix="%">0%</div><div class="stat-label">Retention Rate</div></div>
-        <div class="stat-item"><div class="stat-value" data-count="847000" data-prefix="$" data-suffix="K">$0</div><div class="stat-label">ARR Growth</div></div>
-        <div class="stat-item"><div class="stat-value" data-count="18" data-suffix="">0</div><div class="stat-label">Day Deal Cycle</div></div>
+        <div class="stat-item"><div class="stat-value" data-count="12000" data-prefix="" data-suffix="+">0</div><div class="stat-label">Signals Tracked Daily</div></div>
+        <div class="stat-item"><div class="stat-value" data-count="48" data-suffix="">0</div><div class="stat-label">Hours Cold to Warm</div></div>
+        <div class="stat-item"><div class="stat-value" data-count="300" data-prefix="" data-suffix="+">0</div><div class="stat-label">Rep Hours Freed / Mo</div></div>
+        <div class="stat-item"><div class="stat-value" data-count="94" data-suffix="%">0%</div><div class="stat-label">Client Retention</div></div>
+        <div class="stat-item"><div class="stat-value" data-count="60" data-suffix="">0</div><div class="stat-label">Days to First Impact</div></div>
+        <div class="stat-item"><div class="stat-value" data-count="100" data-suffix="%">0%</div><div class="stat-label">Follow-Up Coverage</div></div>
     </div>
 </section>
 
@@ -1283,9 +1283,9 @@
                     const eased = 1 - Math.pow(1 - progress, 3);
                     const current = Math.floor(eased * target);
                     let display;
-                    if (target >= 1000000) display = prefix + (current / 1000000).toFixed(1).replace('.0', '') + suffix;
-                    else if (target >= 1000) display = prefix + (current / 1000).toFixed(0) + suffix;
-                    else display = prefix + current + suffix;
+                    if (suffix === 'M' && target >= 1000000) display = prefix + (current / 1000000).toFixed(1).replace('.0', '') + suffix;
+                    else if (suffix === 'K' && target >= 1000) display = prefix + (current / 1000).toFixed(0) + suffix;
+                    else display = prefix + current.toLocaleString() + suffix;
                     entry.target.textContent = display;
                     if (progress < 1) requestAnimationFrame(update);
                 }
