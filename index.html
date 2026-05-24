@@ -281,6 +281,68 @@
         @media (max-width: 480px) { .stats-inner { grid-template-columns: repeat(2, 1fr); } .stat-item:nth-child(odd) { border-right: 1px solid var(--border); } .stat-item:nth-child(even) { border-right: none; } .stat-item:nth-child(n+3) { border-top: 1px solid var(--border); } }
 
         /* =====================================================================
+         * LOGO STRIP
+         * ===================================================================== */
+        .logo-strip {
+            position: relative; z-index: 2;
+            padding: 64px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-elevated);
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .logo-strip-label {
+            font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
+            letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 36px;
+        }
+        .logo-strip-mask {
+            position: relative; width: 100%; overflow: hidden;
+        }
+        .logo-strip-mask::before,
+        .logo-strip-mask::after {
+            content: ''; position: absolute; top: 0; bottom: 0; z-index: 2;
+            width: 30%; pointer-events: none;
+        }
+        .logo-strip-mask::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-elevated) 10%, transparent);
+        }
+        .logo-strip-mask::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-elevated) 10%, transparent);
+        }
+        .logo-strip-track {
+            display: flex; gap: 80px; align-items: center;
+            width: max-content; margin: 0 auto;
+            animation: logoSway 16s ease-in-out infinite alternate;
+        }
+        .logo-strip:hover .logo-strip-track { animation-play-state: paused; }
+        .logo-strip-item {
+            height: 40px; width: auto; max-width: 160px;
+            object-fit: contain; flex-shrink: 0;
+            opacity: 0.7;
+            transition: all 0.4s var(--ease-out);
+        }
+        .logo-strip-item:hover {
+            opacity: 1; transform: scale(1.06);
+            filter: drop-shadow(0 0 12px rgba(46, 204, 113, 0.25));
+        }
+        @keyframes logoSway {
+            0%   { transform: translateX(-48px); }
+            100% { transform: translateX(48px); }
+        }
+        @media (max-width: 768px) {
+            .logo-strip { padding: 40px 0; }
+            .logo-strip-track { gap: 40px; }
+            .logo-strip-item { height: 24px; max-width: 96px; }
+            @keyframes logoSway {
+                0%   { transform: translateX(-28px); }
+                100% { transform: translateX(28px); }
+            }
+        }
+
+        /* =====================================================================
          * SECTIONS
          * ===================================================================== */
         .section {
@@ -405,35 +467,53 @@
          * ===================================================================== */
         .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
         .case-card {
-            background: var(--bg); padding: 64px 56px;
-            transition: all 0.7s var(--ease-out); position: relative; overflow: hidden;
+            background: var(--bg); padding: 56px 48px;
+            transition: all 0.5s var(--ease-out);
         }
         .case-card:hover { background: var(--bg-elevated); }
-        .case-card:hover .case-quote { border-left-color: var(--accent); }
-        .case-card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 36px; }
-        .case-logo {
-            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-            border: 1px solid var(--border); border-radius: 10px;
-            font-family: var(--font-mono); font-size: 14px; font-weight: 400; color: var(--text-dim);
-            transition: all 0.6s;
+        .case-top {
+            display: flex; align-items: center; gap: 16px; margin-bottom: 32px;
         }
-        .case-card:hover .case-logo { border-color: var(--accent); color: var(--accent); box-shadow: 0 0 20px rgba(46, 204, 113, 0.1); }
-        .case-industry { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; }
-        .case-company { font-family: var(--font-serif); font-size: 34px; font-weight: 400; color: var(--text); margin-bottom: 28px; }
+        .case-photo {
+            width: 96px; height: 96px; border-radius: 50%; overflow: hidden;
+            border: 1.5px solid var(--border); flex-shrink: 0;
+            transition: border-color 0.5s;
+        }
+        .case-card:hover .case-photo { border-color: var(--accent); }
+        .case-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .case-name { font-family: var(--font-serif); font-size: 26px; font-weight: 400; color: var(--text); line-height: 1.1; }
+        .case-tag { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; }
+        .case-story { margin-bottom: 28px; }
+        .case-story p { font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 12px; }
+        .case-story p:last-child { margin-bottom: 0; }
+        .case-story strong { color: var(--accent); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 400; margin-right: 4px; }
+        .case-metrics {
+            display: flex; gap: 36px; flex-wrap: wrap;
+            padding-top: 24px; border-top: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+        .case-metric-v { font-family: var(--font-serif); font-size: 30px; font-weight: 400; color: var(--text); line-height: 1; letter-spacing: -0.02em; }
+        .case-metric-l { font-family: var(--font-mono); font-size: 9px; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
         .case-quote {
-            font-size: 16px; line-height: 1.7; color: var(--text-muted); margin-bottom: 32px;
-            padding-left: 24px; border-left: 2px solid var(--border);
-            transition: border-color 0.7s; font-style: italic;
+            font-size: 15px; line-height: 1.7; color: var(--text-muted); font-style: italic;
+            margin-bottom: 14px;
         }
-        .case-metrics { display: flex; gap: 56px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--border); }
-        .case-metric-v { font-family: var(--font-serif); font-size: 36px; font-weight: 400; color: var(--text); letter-spacing: -0.02em; }
-        .case-metric-l { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 8px; }
-        @media (max-width: 768px) { .cases-grid { grid-template-columns: 1fr; } .case-card { padding: 44px 28px; } }
+        .case-card:hover .case-quote { color: var(--text); }
+        .case-attribution { font-size: 12px; color: var(--text-dim); }
+        .case-attribution strong { color: var(--text); font-weight: 500; }
+        @media (max-width: 768px) {
+            .cases-grid { grid-template-columns: 1fr; }
+            .case-card { padding: 40px 28px; }
+            .case-name { font-size: 22px; }
+            .case-metric-v { font-size: 24px; }
+            .case-metrics { gap: 24px; }
+        }
 
         /* =====================================================================
          * TEAM
          * ===================================================================== */
-        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
+        .team-card:nth-child(7) { grid-column: 1 / -1; justify-content: center; }
         .team-card {
             background: var(--bg); padding: 64px;
             display: flex; align-items: flex-start; gap: 40px;
@@ -453,46 +533,8 @@
         .team-bio { font-size: 15px; line-height: 1.7; color: var(--text-muted); margin-bottom: 18px; }
         .team-social { color: var(--text-dim); text-decoration: none; font-size: 13px; transition: color 0.3s; }
         .team-social:hover { color: var(--accent); }
-        @media (max-width: 900px) {
-            .team-grid { grid-template-columns: 1fr; }
-            .team-card { padding: 44px 32px; flex-direction: column; align-items: center; text-align: center; }
-            .team-avatar { width: 150px; height: 150px; }
-        }
-
-        /* Advisor cards (within team section) */
-        .advisor-label {
-            font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
-            letter-spacing: 0.1em; text-transform: uppercase; text-align: center;
-            margin-top: 100px; margin-bottom: 48px;
-        }
-        .advisor-label::after {
-            content: ''; display: block; width: 48px; height: 1px;
-            background: var(--border); margin: 16px auto 0;
-        }
-        .advisors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
-        .advisor-card {
-            background: var(--bg); padding: 48px 32px; text-align: center;
-            transition: all 0.6s var(--ease-out);
-        }
-        .advisor-card:hover { background: var(--bg-elevated); }
-        .advisor-card:hover .advisor-avatar { border-color: var(--accent); transform: scale(1.04); }
-        .advisor-card:hover .advisor-avatar img { filter: grayscale(0%); }
-        .advisor-avatar {
-            width: 88px; height: 88px; border-radius: 50%; overflow: hidden;
-            border: 1.5px solid var(--border); margin: 0 auto 20px;
-            transition: all 0.7s var(--ease-out);
-        }
-        .advisor-avatar img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(25%) contrast(1.05); transition: filter 0.7s; }
-        .advisor-name { font-family: var(--font-serif); font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 4px; }
-        .advisor-role { font-family: var(--font-mono); font-size: 10px; color: var(--accent); margin-bottom: 14px; letter-spacing: 0.04em; }
-        .advisor-bio { font-size: 13px; line-height: 1.7; color: var(--text-muted); }
-        .advisor-linkedin {
-            display: inline-block; margin-top: 14px; font-size: 12px; color: var(--text-dim);
-            text-decoration: none; transition: color 0.3s;
-        }
-        .advisor-linkedin:hover { color: var(--accent); }
-        @media (max-width: 1024px) { .advisors-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 480px) { .advisors-grid { grid-template-columns: 1fr; } .advisor-label { margin-top: 72px; } }
+        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-card:nth-child(7) { grid-column: auto; justify-content: flex-start; } }
+        @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } .team-card { padding: 44px 32px; flex-direction: column; align-items: center; text-align: center; } .team-avatar { width: 96px; height: 96px; } }
 
         /* =====================================================================
          * FAQ
@@ -667,6 +709,23 @@
     </div>
 </section>
 
+<!-- Logo Strip -->
+<div class="logo-strip">
+    <div class="logo-strip-label">Powered By Industry-Leading Tools</div>
+    <div class="logo-strip-mask">
+        <div class="logo-strip-track">
+            <img class="logo-strip-item" src="assets/n8n.svg" alt="n8n">
+            <img class="logo-strip-item" src="assets/anthropic.svg" alt="Anthropic">
+            <img class="logo-strip-item" src="assets/chatgpt.svg" alt="ChatGPT">
+            <img class="logo-strip-item" src="assets/instantly.avif" alt="Instantly" style="height:48px">
+            <img class="logo-strip-item" src="assets/slack.svg" alt="Slack">
+            <img class="logo-strip-item" src="assets/heyreach.svg" alt="HeyReach" style="height:24px">
+            <img class="logo-strip-item" src="assets/clickup.png" alt="ClickUp" style="height:24px">
+            <img class="logo-strip-item" src="assets/opencode-wordmark-dark.png" alt="OpenCode" style="height:22px">
+        </div>
+    </div>
+</div>
+
 <!-- Services -->
 <section class="section" id="services">
     <div style="max-width: 1140px; margin: 0 auto;">
@@ -783,34 +842,90 @@
     <div style="max-width: 1140px; margin: 0 auto;">
         <div class="section-header centered">
             <div class="eyebrow">Proof</div>
-            <h2 class="section-title">The <em>Numbers</em></h2>
+            <h2 class="section-title">Four Clients.<br><em>Zero Theories.</em></h2>
             <p class="section-sub" style="margin-top: 16px;">Four engagements. Four industries. The same system underneath.</p>
         </div>
     </div>
     <div class="cases-grid">
         <div class="case-card">
-            <div class="case-card-header"><div class="case-logo">AV</div><div class="case-industry">Venture Capital</div></div>
-            <div class="case-company">Avalanche Capital</div>
+            <div class="case-top">
+                <div class="case-photo"><img src="assets/bernado.jfif" alt="Bernardo" loading="lazy"></div>
+                <div>
+                    <div class="case-name">Avalanche Capital</div>
+                    <div class="case-tag">Venture Capital</div>
+                </div>
+            </div>
+            <div class="case-story">
+                <p><strong>Challenge</strong> Unpredictable deal flow from manual investor engagement. Pipeline depended entirely on who answered the phone that week.</p>
+                <p><strong>Solution</strong> Automated M&A outreach infrastructure with mandate-specific targeting. Books meetings without adding headcount. Runs in the background.</p>
+            </div>
+            <div class="case-metrics">
+                <div><div class="case-metric-v">2&times;</div><div class="case-metric-l">Weekly Pipeline</div></div>
+                <div><div class="case-metric-v">$100M</div><div class="case-metric-l">Capital Raise</div></div>
+                <div><div class="case-metric-v">25+</div><div class="case-metric-l">Meetings / Mo</div></div>
+            </div>
             <div class="case-quote">"From zero LP conversations to our first $500K closed check in under eight weeks. The velocity was unlike anything we'd experienced."</div>
-            <div class="case-metrics"><div><div class="case-metric-v">$2.4M</div><div class="case-metric-l">New AUM</div></div><div><div class="case-metric-v">8 wks</div><div class="case-metric-l">To Close</div></div></div>
+            <div class="case-attribution"><strong>Bernardo Mendes Almeida</strong> — CEO, Avalanche Capital</div>
         </div>
         <div class="case-card">
-            <div class="case-card-header"><div class="case-logo">NX</div><div class="case-industry">HealthTech</div></div>
-            <div class="case-company">NXAI Health</div>
-            <div class="case-quote">"We replaced our demand gen function entirely. More demos, higher quality, and at a fraction of the headcount cost."</div>
-            <div class="case-metrics"><div><div class="case-metric-v">+890%</div><div class="case-metric-l">Demo Requests</div></div><div><div class="case-metric-v">63%</div><div class="case-metric-l">Cost Cut</div></div></div>
+            <div class="case-top">
+                <div class="case-photo"><img src="assets/sandeep.jpg" alt="Sandeep" loading="lazy"></div>
+                <div>
+                    <div class="case-name">Sandeep for Texas</div>
+                    <div class="case-tag">Political Campaign</div>
+                </div>
+            </div>
+            <div class="case-story">
+                <p><strong>Challenge</strong> 30,000 voters to reach with consistent messaging, strict legal compliance, and instant opt-out enforcement. Manual calling couldn't scale.</p>
+                <p><strong>Solution</strong> Automated outreach with real-time sentiment grading on every response. Instant DNC flagging. Full CRM integration that kept the campaign legally airtight at scale.</p>
+            </div>
+            <div class="case-metrics">
+                <div><div class="case-metric-v">30K</div><div class="case-metric-l">Voters Reached</div></div>
+                <div><div class="case-metric-v">$820K</div><div class="case-metric-l">Funds Raised</div></div>
+                <div><div class="case-metric-v">0</div><div class="case-metric-l">Compliance Issues</div></div>
+            </div>
+            <div class="case-quote">"In a campaign, speed is everything and one misstep kills you. DealGrowth gave us velocity with airtight compliance. We reached voters at a scale that would've taken twenty people."</div>
+            <div class="case-attribution"><strong>Sandeep Srivastava</strong> — Candidate, Texas House District 66</div>
         </div>
         <div class="case-card">
-            <div class="case-card-header"><div class="case-logo">BN</div><div class="case-industry">Manufacturing</div></div>
-            <div class="case-company">Bellini's Newry</div>
-            <div class="case-quote">"Traditional outreach was dead for us. DealGrowth opened doors we didn't know existed. The pipeline is unrecognizable."</div>
-            <div class="case-metrics"><div><div class="case-metric-v">$1.1M</div><div class="case-metric-l">New Contracts</div></div><div><div class="case-metric-v">4&times;</div><div class="case-metric-l">Pipeline Volume</div></div></div>
+            <div class="case-top">
+                <div class="case-photo"><img src="assets/kieran.jfif" alt="Kieran" loading="lazy"></div>
+                <div>
+                    <div class="case-name">Bellini's Newry</div>
+                    <div class="case-tag">Hospitality</div>
+                </div>
+            </div>
+            <div class="case-story">
+                <p><strong>Challenge</strong> Revenue leaked every night from unanswered after-hours calls. Staff buried in repetitive guest questions during peak hours.</p>
+                <p><strong>Solution</strong> Dual AI agent system. Voice receptionist captures after-hours bookings. Chat concierge automates every Tier-1 guest question. Both run 24/7 with zero oversight.</p>
+            </div>
+            <div class="case-metrics">
+                <div><div class="case-metric-v">$1.1M</div><div class="case-metric-l">New Revenue</div></div>
+                <div><div class="case-metric-v">100%</div><div class="case-metric-l">After-Hours Covered</div></div>
+                <div><div class="case-metric-v">4&times;</div><div class="case-metric-l">Bookings</div></div>
+            </div>
+            <div class="case-quote">"We were losing bookings every night and didn't even know how many. DealGrowth plugged the leak. Our staff can focus on guests now instead of answering the same questions forty times a day."</div>
+            <div class="case-attribution"><strong>Kieran Bradley</strong> — Owner, Bellini's Newry &amp; Walsh's Hotel</div>
         </div>
         <div class="case-card">
-            <div class="case-card-header"><div class="case-logo">SF</div><div class="case-industry">Political Campaign</div></div>
-            <div class="case-company">Sandeep for Texas</div>
-            <div class="case-quote">"In a campaign, speed is everything. We reached 47,000 donors in weeks. Outreach that would have taken a team of twenty."</div>
-            <div class="case-metrics"><div><div class="case-metric-v">47K</div><div class="case-metric-l">Contacts Reached</div></div><div><div class="case-metric-v">$820K</div><div class="case-metric-l">Funds Raised</div></div></div>
+            <div class="case-top">
+                <div class="case-photo"><img src="assets/phil.jfif" alt="Phil" loading="lazy"></div>
+                <div>
+                    <div class="case-name">NXAI Health</div>
+                    <div class="case-tag">HealthTech</div>
+                </div>
+            </div>
+            <div class="case-story">
+                <p><strong>Challenge</strong> Inconsistent deal flow. No predictable sales infrastructure. Every deal felt like starting from zero.</p>
+                <p><strong>Solution</strong> Multichannel acquisition engine targeting healthcare decision-makers across email and LinkedIn. GTM overhaul sharpened the offer. Internal protocols aligned data strategy with deal psychology.</p>
+            </div>
+            <div class="case-metrics">
+                <div><div class="case-metric-v">+890%</div><div class="case-metric-l">Demo Requests</div></div>
+                <div><div class="case-metric-v">63%</div><div class="case-metric-l">Cost Reduction</div></div>
+                <div><div class="case-metric-v">1</div><div class="case-metric-l">Enterprise Deal</div></div>
+            </div>
+            <div class="case-quote">"We replaced our demand gen function entirely. More demos, higher quality prospects, at a fraction of the headcount cost. The positioning work alone paid for the engagement before a campaign launched."</div>
+            <div class="case-attribution"><strong>Phil Zappone</strong> — Founder &amp; CEO, NXAI Health</div>
         </div>
     </div>
 </section>
@@ -821,7 +936,7 @@
         <div class="section-header centered">
             <div class="eyebrow">The Team</div>
             <h2 class="section-title">Who Builds <em>It</em></h2>
-            <p class="section-sub" style="margin-top: 16px;">Two founders building the systems. Four advisors ensuring they run in the right direction.</p>
+            <p class="section-sub" style="margin-top: 16px;">This is what replaces the SDR team you keep having to rebuild.</p>
         </div>
     </div>
     <div class="team-grid">
@@ -839,40 +954,53 @@
             <div>
                 <div class="team-name">Tommy Aman</div>
                 <div class="team-role">Co-Founder &amp; Chief Revenue Officer</div>
-                <p class="team-bio">Owns the relationship from first call to closed revenue. Translates what your market needs into what our systems do. The person you'll actually work with.</p>
+                <p class="team-bio">Owns the relationship from first call to closed revenue. Translates what your market needs into what our systems do. Your pipeline becomes his problem too.</p>
                 <a href="https://www.linkedin.com/in/ethan-aman-566058173/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
             </div>
         </div>
-    </div>
-    <div class="advisor-label">Strategic Advisors</div>
-    <div class="advisors-grid">
-        <div class="advisor-card">
-            <div class="advisor-avatar"><img src="assets/jim%20posner.webp" alt="Jim Posner" loading="lazy"></div>
-            <div class="advisor-name">Jim Posner</div>
-            <div class="advisor-role">Capital Markets Advisor</div>
-            <p class="advisor-bio">Senior Vice President at R.F. Lafferty &amp; Co., the 75-year-old NYC broker/dealer behind some of the most active MicroCap IPOs in the country. Advises on private equity, capital raises, and growth-stage financing.</p>
-            <a href="https://www.linkedin.com/in/jim-posner/" class="advisor-linkedin" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+        <div class="team-card">
+            <div class="team-avatar"><img src="assets/sophia.avif" alt="Sophia" loading="lazy"></div>
+            <div>
+                <div class="team-name">Sophia Chen</div>
+                <div class="team-role">Automation Engineer</div>
+                <p class="team-bio">Builds the automations that keep the pipeline moving. Every n8n workflow, every CRM integration, every AI agent running behind the scenes. It works because she helped to build it.</p>
+            </div>
         </div>
-        <div class="advisor-card">
-            <div class="advisor-avatar"><img src="assets/bruce%20belchman.webp" alt="Bruce Blechman" loading="lazy"></div>
-            <div class="advisor-name">Bruce Blechman</div>
-            <div class="advisor-role">Strategic Finance Advisor</div>
-            <p class="advisor-bio">General Partner at iCFO Capital. 35 years structuring debt and equity, navigating M&amp;A, and closing growth financing. Wharton graduate. Bestselling author of Guerrilla Financing.</p>
-            <a href="https://www.linkedin.com/in/bruceblechman/" class="advisor-linkedin" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+        <div class="team-card">
+            <div class="team-avatar" style="width:88px;height:88px"><img src="assets/jim%20posner.webp" alt="Jim Posner" loading="lazy"></div>
+            <div>
+                <div class="team-name" style="font-size:22px">Jim Posner</div>
+                <div class="team-role">Capital Markets Advisor</div>
+                <p class="team-bio" style="font-size:14px">Senior Vice President at R.F. Lafferty &amp; Co., the 75-year-old NYC broker/dealer behind some of the most active MicroCap IPOs in the country. Advises on private equity, capital raises, and growth-stage financing.</p>
+                <a href="https://www.linkedin.com/in/jim-posner/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            </div>
         </div>
-        <div class="advisor-card">
-            <div class="advisor-avatar"><img src="assets/damien%20jackson.png" alt="Damien Jackson" loading="lazy"></div>
-            <div class="advisor-name">Damien Jackson</div>
-            <div class="advisor-role">Capital Strategy Advisor</div>
-            <p class="advisor-bio">Founder of Kind Capital Resources. Helps businesses secure funding through Reg D, Section 1202, and executive financial planning. A mission-driven approach to capital access and business growth.</p>
-            <a href="https://www.linkedin.com/in/damien-jackson-97195814/" class="advisor-linkedin" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+        <div class="team-card">
+            <div class="team-avatar" style="width:88px;height:88px"><img src="assets/bruce%20belchman.webp" alt="Bruce Blechman" loading="lazy"></div>
+            <div>
+                <div class="team-name" style="font-size:22px">Bruce Blechman</div>
+                <div class="team-role">Strategic Finance Advisor</div>
+                <p class="team-bio" style="font-size:14px">General Partner at iCFO Capital. 35 years structuring debt and equity, navigating M&amp;A, and closing growth financing. Wharton graduate. Bestselling author of Guerrilla Financing.</p>
+                <a href="https://www.linkedin.com/in/bruceblechman/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            </div>
         </div>
-        <div class="advisor-card">
-            <div class="advisor-avatar"><img src="assets/jack%20myers.png" alt="Jack Myers" loading="lazy"></div>
-            <div class="advisor-name">Jack Myers</div>
-            <div class="advisor-role">Investment Banking Advisor</div>
-            <p class="advisor-bio">30 years closing IPOs, M&amp;A, PIPEs, private placements, and bridge loans. Hundreds of transactions ranging from $1M to $50M. Deep deal execution expertise and a proven track record in corporate finance.</p>
-            <a href="https://www.linkedin.com/in/jack-m-03349a16/" class="advisor-linkedin" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+        <div class="team-card">
+            <div class="team-avatar" style="width:88px;height:88px"><img src="assets/damien%20jackson.png" alt="Damien Jackson" loading="lazy"></div>
+            <div>
+                <div class="team-name" style="font-size:22px">Damien Jackson</div>
+                <div class="team-role">Capital Strategy Advisor</div>
+                <p class="team-bio" style="font-size:14px">Founder of Kind Capital Resources. Helps businesses secure funding through Reg D, Section 1202, and executive financial planning. A mission-driven approach to capital access and business growth.</p>
+                <a href="https://www.linkedin.com/in/damien-jackson-97195814/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar" style="width:88px;height:88px"><img src="assets/jack%20myers.png" alt="Jack Myers" loading="lazy"></div>
+            <div>
+                <div class="team-name" style="font-size:22px">Jack Myers</div>
+                <div class="team-role">Investment Banking Advisor</div>
+                <p class="team-bio" style="font-size:14px">30 years closing IPOs, M&amp;A, PIPEs, private placements, and bridge loans. Hundreds of transactions ranging from $1M to $50M. Deep deal execution expertise and a proven track record in corporate finance.</p>
+                <a href="https://www.linkedin.com/in/jack-m-03349a16/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            </div>
         </div>
     </div>
 </section>
