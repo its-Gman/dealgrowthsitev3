@@ -17,8 +17,8 @@
             --border: #1a2e1f;
             --border-hover: #26402e;
             --text: #e8f0e9;
-            --text-muted: #8aaa8e;
-            --text-dim: #4a6b50;
+            --text-muted: #9bbba0;
+            --text-dim: #5a7d60;
             --accent: #2ecc71;
             --accent-bright: #3ddc84;
             --accent-dim: rgba(46, 204, 113, 0.08);
@@ -80,10 +80,10 @@
             transition: opacity 1.2s var(--ease-out), visibility 1.2s;
         }
         .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-        .loader img { height: 108px; opacity: 0; animation: loaderIn 0.8s var(--ease-out) 0.3s forwards; }
+        .loader img { height: 64px; opacity: 0; animation: loaderIn 0.8s var(--ease-out) 0.3s forwards; }
         @keyframes loaderIn { to { opacity: 0.9; } }
         .loader-ring {
-            position: absolute; width: 80px; height: 80px;
+            position: absolute; width: 100px; height: 100px;
             border: 1px solid var(--border); border-top-color: var(--accent);
             border-radius: 50%; animation: loaderSpin 1s linear infinite;
             opacity: 0.5;
@@ -95,7 +95,7 @@
          * ===================================================================== */
         nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 0 48px; height: 108px;
+            padding: 0 48px; height: 80px;
             display: flex; align-items: center; justify-content: space-between;
             transition: all 0.6s var(--ease-out);
         }
@@ -104,7 +104,7 @@
             backdrop-filter: blur(40px) saturate(1.2);
             -webkit-backdrop-filter: blur(40px) saturate(1.2);
         }
-        nav .logo img { height: 80px; display: block; opacity: 0.9; transition: opacity 0.3s, filter 0.3s; }
+        nav .logo img { height: 52px; display: block; opacity: 0.9; transition: opacity 0.3s, filter 0.3s; }
         nav .logo:hover img { opacity: 1; filter: drop-shadow(0 0 20px rgba(46,204,113,0.3)); }
         .nav-links { display: flex; gap: 40px; list-style: none; }
         .nav-links a {
@@ -162,7 +162,7 @@
         @media (max-width: 900px) {
             .nav-links, .nav-right .nav-cta { display: none; }
             .hamburger { display: block; }
-            nav { padding: 0 24px; height: 104px; }
+            nav { padding: 0 24px; height: 72px; }
         }
 
         /* =====================================================================
@@ -175,7 +175,7 @@
         }
         .hero-vignette {
             position: absolute; inset: 0; z-index: 1; pointer-events: none;
-            background: radial-gradient(ellipse at 50% 40%, transparent 0%, var(--bg) 70%);
+            background: radial-gradient(ellipse at 50% 40%, transparent 0%, var(--bg) 82%);
         }
         .hero-content { position: relative; z-index: 2; max-width: 900px; }
         .hero-eyebrow {
@@ -378,7 +378,7 @@
             display: grid; grid-template-columns: 60px 1fr 1fr auto;
             gap: 40px; align-items: center;
             padding: 44px 0; border-bottom: 1px solid var(--border);
-            transition: all 0.6s var(--ease-out); position: relative; cursor: default;
+            transition: all 0.6s var(--ease-out); position: relative;
         }
         .service-item:first-child { border-top: 1px solid var(--border); }
         .service-item:hover { padding-left: 20px; padding-right: 20px; margin: 0 -20px; background: var(--bg-elevated); border-color: var(--border-hover); }
@@ -454,9 +454,10 @@
         .benefit-icon {
             width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
             border: 1px solid var(--border); border-radius: 10px;
-            margin-bottom: 32px; font-size: 20px; color: var(--text-dim);
+            margin-bottom: 32px; color: var(--text-dim);
             transition: all 0.6s var(--ease-out);
         }
+        .benefit-icon svg { width: 22px; height: 22px; flex-shrink: 0; }
         .benefit-title { font-family: var(--font-serif); font-size: 22px; font-weight: 400; color: var(--text); margin-bottom: 10px; }
         .benefit-desc { font-size: 14px; line-height: 1.7; color: var(--text-muted); }
         @media (max-width: 900px) { .benefits-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -533,7 +534,7 @@
         .team-bio { font-size: 15px; line-height: 1.7; color: var(--text-muted); margin-bottom: 18px; }
         .team-social { color: var(--text-dim); text-decoration: none; font-size: 13px; transition: color 0.3s; }
         .team-social:hover { color: var(--accent); }
-        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-card:nth-child(7) { grid-column: auto; justify-content: flex-start; } }
+        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-card:nth-child(7) { grid-column: 1 / -1; justify-content: flex-start; } }
         @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } .team-card { padding: 44px 32px; flex-direction: column; align-items: center; text-align: center; } .team-avatar { width: 96px; height: 96px; } }
 
         /* =====================================================================
@@ -595,7 +596,7 @@
         .footer-border { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); position: relative; z-index: 2; }
         footer { padding: 100px 48px 48px; position: relative; z-index: 2; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 80px; }
-        .footer-brand img { height: 72px; opacity: 0.85; margin-bottom: 24px; }
+        .footer-brand img { height: 52px; opacity: 0.85; margin-bottom: 24px; }
         .footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 300px; }
         .footer-col h4 {
             font-family: var(--font-mono); font-size: 10px; color: var(--text-dim);
@@ -684,8 +685,8 @@
     <div class="hero-vignette"></div>
     <div class="hero-content">
         <div class="hero-eyebrow">Your Outbound, Autonomous</div>
-        <h1>We Prospect.<br><em>They Close.</em></h1>
-        <p class="hero-desc">AI agents handle list building, email, LinkedIn, every follow-up. Your producers, loan officers, and advisors step into meetings that are already warm. Compliant. Audit-ready. Always running.</p>
+        <h1>More Closed Deals.<br><em>Less Prospecting.</em></h1>
+        <p class="hero-desc">We run your outbound — email, LinkedIn, voice — and track every signal. Your producers, advisors, and loan officers step into meetings that are already warm. Fully compliant. Audit-ready. More deals per rep. No added headcount.</p>
         <div class="hero-actions">
             <a href="#contact" class="btn-primary">Let's Talk &rarr;</a>
             <a href="#services" class="btn-ghost">Explore Services &rarr;</a>
@@ -804,32 +805,32 @@
         </div>
         <div class="benefits-grid">
             <div class="benefit-card">
-                <div class="benefit-icon">&#128640;</div>
+                <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3l8 16H2z"/><circle cx="10" cy="14" r="1.5" fill="currentColor"/></svg></div>
                 <div class="benefit-title">Your Best People Stop Prospecting</div>
                 <div class="benefit-desc">The talent you pay to close finally gets to close. AI handles the research, the outreach, and the follow-ups.</div>
             </div>
             <div class="benefit-card">
-                <div class="benefit-icon">&#128200;</div>
+                <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="2" y="12" width="4" height="6" rx="0.5"/><rect x="8" y="7" width="4" height="11" rx="0.5"/><rect x="14" y="3" width="4" height="15" rx="0.5"/></svg></div>
                 <div class="benefit-title">Pipeline That Never Clocks Out</div>
                 <div class="benefit-desc">Prospects get follow-ups at 2 AM, on weekends, over holidays. No lead goes cold because someone went home.</div>
             </div>
             <div class="benefit-card">
-                <div class="benefit-icon">&#127919;</div>
+                <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="10" cy="10" r="8"/><circle cx="10" cy="10" r="3.5"/><circle cx="10" cy="10" r="1" fill="currentColor"/></svg></div>
                 <div class="benefit-title">Every Message, Tailored</div>
                 <div class="benefit-desc">Role. Company. Recent triggers. Each prospect hears from you like you researched them by hand.</div>
             </div>
             <div class="benefit-card">
-                <div class="benefit-icon">&#9889;</div>
+                <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v6"/><path d="M7 5h6l-8 6h6"/><circle cx="10" cy="15" r="1.5" fill="currentColor"/></svg></div>
                 <div class="benefit-title">No Training. No Ramp. No Turnover.</div>
                 <div class="benefit-desc">Hire an SDR and you wait 90 days for them to be useful. Our systems go live in weeks and sharpen from there.</div>
             </div>
             <div class="benefit-card">
-                <div class="benefit-icon">&#128273;</div>
+                <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v8M6 8l4-4 4 4"/></svg></div>
                 <div class="benefit-title">Smarter Every Campaign</div>
                 <div class="benefit-desc">Every open, every click, every booked meeting teaches the system. Month three always beats month one.</div>
             </div>
             <div class="benefit-card">
-                <div class="benefit-icon">&#128176;</div>
+                <div class="benefit-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"><rect x="3" y="5" width="14" height="11" rx="1.5"/><path d="M6 2v6M14 2v6M6 11h8"/></svg></div>
                 <div class="benefit-title">Less Than a Single Hire</div>
                 <div class="benefit-desc">Full outbound infrastructure: list building, multi-channel outreach, analytics. All for less than one junior SDR.</div>
             </div>
@@ -1043,8 +1044,8 @@
         <div class="cta-inner">
             <div class="eyebrow">Let's Talk</div>
             <h2 class="section-title">Your Pipeline Should<br>Be Fuller <em>By Now.</em></h2>
-            <p>Thirty minutes. No pitch deck. We'll map your current gaps, estimate what a full pipeline looks like for your market, and tell you honestly whether we can close the distance.</p>
-            <a href="https://calendly.com/dealgrowth" class="btn-primary" target="_blank" rel="noopener">See If We're a Fit &rarr;</a>
+            <p>Thirty minutes. No pitch deck. We'll map your current gaps, estimate what a full pipeline looks like for your market, and tell you honestly whether we can help.</p>
+            <a href="https://calendly.com/deal-growth-ai/deal-growth?month=2026-05" class="btn-primary" target="_blank" rel="noopener">See If We're a Fit &rarr;</a>
         </div>
     </div>
 </section>
@@ -1079,9 +1080,7 @@
             <div class="footer-col">
                 <h4>Connect</h4>
                 <ul>
-                    <li><a href="#">LinkedIn</a></li>
-                    <li><a href="#">Twitter / X</a></li>
-                    <li><a href="#">YouTube</a></li>
+                    <li><a href="https://www.linkedin.com/company/dealgrowth/posts/?feedView=all" target="_blank" rel="noopener">LinkedIn</a></li>
                     <li><a href="mailto:hello@dealgrowth.ai">hello@dealgrowth.ai</a></li>
                 </ul>
                 <p style="margin-top: 20px; font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); display: flex; align-items: center; gap: 8px;">
@@ -1092,14 +1091,12 @@
         </div>
         <div class="footer-bottom">
             <div style="display: flex; gap: 28px;">
-                <a href="#" style="color: var(--text-dim); text-decoration: none; transition: color 0.2s; font-size: 11px; font-family: var(--font-mono);">Privacy</a>
-                <a href="#" style="color: var(--text-dim); text-decoration: none; transition: color 0.2s; font-size: 11px; font-family: var(--font-mono);">Terms</a>
+                <a href="privacy.html" style="color: var(--text-dim); text-decoration: none; transition: color 0.2s; font-size: 11px; font-family: var(--font-mono);">Privacy</a>
+                <a href="terms.html" style="color: var(--text-dim); text-decoration: none; transition: color 0.2s; font-size: 11px; font-family: var(--font-mono);">Terms</a>
                 <span style="font-size: 11px; font-family: var(--font-mono);">&copy; 2026 DealGrowth</span>
             </div>
             <div class="footer-social">
-                <a href="#" aria-label="LinkedIn">in</a>
-                <a href="#" aria-label="Twitter">X</a>
-                <a href="#" aria-label="YouTube">YT</a>
+                <a href="https://www.linkedin.com/company/dealgrowth/posts/?feedView=all" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
             </div>
         </div>
     </div>
@@ -1141,7 +1138,11 @@
         ctx.fill();
     }
 
+    let rafId;
+    let running = true;
+
     function draw() {
+        if (!running) { rafId = requestAnimationFrame(draw); return; }
         time += 0.003;
         ctx.clearRect(0, 0, w, h);
 
@@ -1201,8 +1202,9 @@
             ctx.fill();
         }
 
-        requestAnimationFrame(draw);
+        rafId = requestAnimationFrame(draw);
     }
+    document.addEventListener('visibilitychange', () => { running = !document.hidden; });
     draw();
 
     // ========== LOADER ==========
@@ -1287,7 +1289,7 @@
     document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
 
     // Scroll-triggered reveals
-    gsap.utils.toArray('.section-header, .service-item, .process-step, .benefit-card, .case-card, .team-card, .faq-item').forEach((el, i) => {
+    gsap.utils.toArray('.section-header, .service-item, .process-step, .benefit-card, .case-card, .team-card, .faq-item, .stat-item, .logo-strip').forEach((el, i) => {
         gsap.from(el, {
             scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
             opacity: 0, y: 50, duration: 1, ease: 'power3.out', delay: (i % 4) * 0.1
