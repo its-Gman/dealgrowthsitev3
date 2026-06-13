@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DealGrowth — More Closed Deals. Less Prospecting.</title>
-    <meta name="description" content="We run your outbound — email, LinkedIn, voice — and track every signal. Your producers, advisors, and loan officers step into meetings that are already warm. Fully compliant. Audit-ready. No added headcount.">
-    <meta property="og:title" content="DealGrowth — More Closed Deals. Less Prospecting.">
-    <meta property="og:description" content="We run your outbound — email, LinkedIn, voice — and track every signal. Your producers, advisors, and loan officers step into meetings that are already warm. Fully compliant. Audit-ready. No added headcount.">
+    <title>DealGrowth: More Closed Deals. Less Prospecting.</title>
+    <meta name="description" content="The AI growth partner serious B2B companies trust. Systems that bring in leads, close revenue, and scale what's working. Designed by operators who've done it in 20+ industries. $28M+ revenue generated | 20+ industries served | 6 yrs production AI">
+    <meta property="og:title" content="DealGrowth: More Closed Deals. Less Prospecting.">
+    <meta property="og:description" content="The AI growth partner serious B2B companies trust. Systems that bring in leads, close revenue, and scale what's working. Designed by operators who've done it in 20+ industries. $28M+ revenue generated | 20+ industries served | 6 yrs production AI">
     <meta property="og:image" content="https://dealgrowth.ai/assets/favicon%20large.png">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
@@ -417,6 +417,109 @@
         }
 
         /* =====================================================================
+         * VERTICALS GRID (services — industry/vertical cards)
+         * ===================================================================== */
+        .verticals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-top: 1px solid var(--border);
+        }
+        .vertical-card {
+            background: var(--bg);
+            padding: 48px 44px 56px;
+            transition: background 0.5s var(--ease-out), padding 0.6s var(--ease-out);
+            position: relative;
+            overflow: hidden;
+        }
+        .vertical-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 0; height: 2px;
+            background: var(--accent);
+            transition: width 0.7s var(--ease-out);
+            z-index: 2;
+        }
+        .vertical-card:hover::before { width: 100%; }
+        .vertical-card:hover {
+            background: var(--bg-elevated);
+            padding-left: 52px;
+        }
+        .vertical-num {
+            position: absolute;
+            top: 28px; right: 32px;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-dim);
+            letter-spacing: 0.12em;
+            transition: color 0.4s;
+        }
+        .vertical-card:hover .vertical-num { color: var(--accent); }
+        .vertical-name {
+            font-family: var(--font-serif);
+            font-size: 30px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: -0.015em;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            padding-right: 56px;
+            transition: color 0.4s;
+        }
+        .vertical-name em { font-style: italic; color: var(--accent); }
+        .vertical-card:hover .vertical-name { color: var(--text); }
+        .vertical-desc {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            max-width: 480px;
+        }
+        .vertical-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .vertical-tag {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--text-dim);
+            padding: 5px 11px;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: all 0.3s var(--ease-out);
+        }
+        .vertical-card:hover .vertical-tag {
+            color: var(--accent);
+            border-color: var(--border-hover);
+        }
+        .vertical-arrow {
+            position: absolute;
+            bottom: 28px; right: 36px;
+            font-size: 20px;
+            color: var(--accent);
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+        }
+        .vertical-card:hover .vertical-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        @media (max-width: 900px) {
+            .verticals-grid { grid-template-columns: 1fr; }
+            .vertical-card { padding: 40px 0 48px; }
+            .vertical-card:hover { padding-left: 0; }
+            .vertical-name { font-size: 24px; padding-right: 48px; }
+            .vertical-num { top: 24px; right: 0; }
+            .vertical-arrow { display: none; }
+        }
+
+        /* =====================================================================
          * PROCESS
          * ===================================================================== */
         .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
@@ -693,7 +796,7 @@
     <div class="hero-content">
         <div class="hero-eyebrow">Fully Autonomous Outbound</div>
         <h1>More Closed Deals.<br><em>Less Prospecting.</em></h1>
-        <p class="hero-desc">We run your outbound — email, LinkedIn, voice — and track every signal. Your producers, advisors, and loan officers step into meetings that are already warm. Fully compliant. Audit-ready. More deals per rep. No added headcount.</p>
+        <p class="hero-desc">The AI growth partner serious B2B companies trust. Systems that bring in leads, close revenue, and scale what's working. Designed by operators who've done it in 20+ industries. $28M+ revenue generated | 20+ industries served | 6 yrs production AI</p>
         <div class="hero-actions">
             <a href="#contact" class="btn-primary">Let's Talk &rarr;</a>
             <a href="#services" class="btn-ghost">Explore Services &rarr;</a>
@@ -740,28 +843,164 @@
         <div class="section-header split">
             <div>
                 <div class="eyebrow">What We Do</div>
-                <h2 class="section-title">Three Systems.<br><em>One Outcome.</em></h2>
+                <h2 class="section-title">AI systems and outbound,<br><em>on autopilot.</em></h2>
             </div>
-            <div class="section-sub">Each one removes a bottleneck between you and a closed deal. The prospecting. The outreach. The infrastructure.</div>
+            <div class="section-sub">We build the automations, run the campaigns on email, LinkedIn, and voice, and book the meetings. It's the same system we run on our own pipeline, used across 20+ industries.</div>
         </div>
-        <div class="services-list">
-            <div class="service-item">
-                <div class="service-num">01</div>
-                <div class="service-name">Autonomous Prospecting</div>
-                <div class="service-desc">AI agents research your market, score every lead, and run every follow-up. Your team never builds a list or sends another cold email.</div>
-                <div class="service-arrow">&rarr;</div>
+        <div class="verticals-grid">
+            <div class="vertical-card">
+                <div class="vertical-num">01</div>
+                <div class="vertical-name">SaaS &amp; <em>Software</em></div>
+                <div class="vertical-desc">Multi-touch outbound into product-led and enterprise SaaS. The ICP gets tighter every quarter, the SDR list goes cold by Thursday, and the only pipeline that compounds is the one running while your team sleeps. We build it. You show up to the meetings.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Cold Email</span>
+                    <span class="vertical-tag">LinkedIn</span>
+                    <span class="vertical-tag">Voice</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
             </div>
-            <div class="service-item">
-                <div class="service-num">02</div>
-                <div class="service-name">Multi-Channel Outreach</div>
-                <div class="service-desc">Email, LinkedIn, and voice. Coordinated by AI so every prospect hears from you on the right channel at the right moment. Nothing gets dropped.</div>
-                <div class="service-arrow">&rarr;</div>
+            <div class="vertical-card">
+                <div class="vertical-num">02</div>
+                <div class="vertical-name">Financial Services &amp; <em>Insurance</em></div>
+                <div class="vertical-desc">Compliance-aware outbound for advisors, brokerages, and InsurTech. Every message reviewed, every cadence logged, every inbox gets something worth opening. Nothing flags at audit. Nothing gets reported as spam. Replies land, deals move, regulators stay out of it.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Outbound</span>
+                    <span class="vertical-tag">Compliance</span>
+                    <span class="vertical-tag">CRM</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
             </div>
-            <div class="service-item">
-                <div class="service-num">03</div>
-                <div class="service-name">Revenue Infrastructure</div>
-                <div class="service-desc">Strategy, tech stack, workflows, documentation. Every piece designed to run without you in the room.</div>
-                <div class="service-arrow">&rarr;</div>
+            <div class="vertical-card">
+                <div class="vertical-num">03</div>
+                <div class="vertical-name">Healthcare &amp; <em>Medtech</em></div>
+                <div class="vertical-desc">HIPAA-conscious outbound for providers, payers, and healthtech. Gatekeepers filter you out, buying cycles stretch past your runway, and one wrong word kills the deal. We work inside the lines. You walk in already trusted.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Outbound</span>
+                    <span class="vertical-tag">Lead Scoring</span>
+                    <span class="vertical-tag">Nurture</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">04</div>
+                <div class="vertical-name">IT &amp; <em>Managed Services</em></div>
+                <div class="vertical-desc">Pipeline for MSPs, MSSPs, and IT consultancies. The buyers you want are already spending six figures on IT and drowning in vendor noise by Wednesday. We find them, name the problem they haven't said out loud, and put the meeting on your calendar.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Outbound</span>
+                    <span class="vertical-tag">Lead Scoring</span>
+                    <span class="vertical-tag">Voice</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">05</div>
+                <div class="vertical-name">Venture Capital &amp; <em>Private Equity</em></div>
+                <div class="vertical-desc">Outbound for funds filling the top of the LP and deal pipeline. M&amp;A sourcing, investor relations, and capital-raise sequencing, all running in your name while the market is open. The next check, the next portfolio company, the next LP close: all of it a function of the system, not your calendar.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Lead Gen</span>
+                    <span class="vertical-tag">Outreach</span>
+                    <span class="vertical-tag">CRM</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">06</div>
+                <div class="vertical-name">Professional <em>Services</em></div>
+                <div class="vertical-desc">Booked meetings for consultancies, accounting firms, and legal practices. The partner is the brand, the relationship is the deal. Buyers don't sign on a cold email, but they'll take a meeting with the right partner at the right firm. We put you in front of them.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Prospecting</span>
+                    <span class="vertical-tag">Outreach</span>
+                    <span class="vertical-tag">Booking</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">07</div>
+                <div class="vertical-name">Marketing &amp; <em>Creative Agencies</em></div>
+                <div class="vertical-desc">Outbound for agencies scaling past founder-led sales. The founder's network got you to seven figures. The next seven come from cold outreach that doesn't read cold, prospects who already know your category, and a pipeline that grows while the principals are in delivery.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Cold Email</span>
+                    <span class="vertical-tag">LinkedIn</span>
+                    <span class="vertical-tag">Pipeline</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">08</div>
+                <div class="vertical-name">Manufacturing &amp; <em>Industrial</em></div>
+                <div class="vertical-desc">Long-cycle prospecting for B2B manufacturers, distributors, and industrial tech. The RFQ takes nine months, the spec is already written, and the buyer changes jobs twice before the contract closes. We keep your name in front of the right engineers, plant managers, and procurement leads from the day the spec goes out.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Account-Based</span>
+                    <span class="vertical-tag">Email</span>
+                    <span class="vertical-tag">Voice</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">09</div>
+                <div class="vertical-name">Real Estate &amp; <em>Construction</em></div>
+                <div class="vertical-desc">Investor and developer outreach for commercial, residential, and CRE. The best deals are off-market, the best investors don't list themselves, and the brokers who close are already in the conversation before the property hits the wire. We get you in the room before the listing goes public.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Lead Gen</span>
+                    <span class="vertical-tag">CRM</span>
+                    <span class="vertical-tag">Nurture</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">10</div>
+                <div class="vertical-name">Logistics &amp; <em>Supply Chain</em></div>
+                <div class="vertical-desc">Outbound into 3PLs, freight brokerages, and supply chain tech. We reach the operators who actually buy, the directors of operations, VPs of supply chain, the people whose phone number isn't on the website. Tire-kickers get filtered out before they hit your CRM.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Cold Email</span>
+                    <span class="vertical-tag">LinkedIn</span>
+                    <span class="vertical-tag">Voice</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">11</div>
+                <div class="vertical-name">Education &amp; <em>EdTech</em></div>
+                <div class="vertical-desc">Enrollment and B2B sales for universities, EdTech platforms, and training companies. The funnel is long, the audience is skeptical, and a burnt lead doesn't come back next semester. We build nurture that warms them over months, not minutes, and turns skeptics into first calls.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Lead Gen</span>
+                    <span class="vertical-tag">Email</span>
+                    <span class="vertical-tag">Nurture</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">12</div>
+                <div class="vertical-name">Recruiting &amp; <em>Staffing</em></div>
+                <div class="vertical-desc">Outbound for recruiters and staffing firms ready to scale. The candidate market and the client market are two different funnels running on the same person right now. We automate both in parallel, and your recruiters stop living in their inboxes and start filling roles.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Cold Email</span>
+                    <span class="vertical-tag">LinkedIn</span>
+                    <span class="vertical-tag">Voice</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">13</div>
+                <div class="vertical-name"><em>Hospitality</em></div>
+                <div class="vertical-desc">Voice and chat systems for hotels, restaurants, and venues. The phone rings at 11pm with a four-top, the chat pops with "do you have a table for six on Saturday," and your front desk is already off the clock. AI agents answer, book, confirm, capture the email, and never lose the upsell.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Voice</span>
+                    <span class="vertical-tag">AI Agents</span>
+                    <span class="vertical-tag">Booking</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
+            </div>
+            <div class="vertical-card">
+                <div class="vertical-num">14</div>
+                <div class="vertical-name">Political Campaigns &amp; <em>Advocacy</em></div>
+                <div class="vertical-desc">Compliant outreach for campaigns, PACs, and advocacy orgs. Every voter and donor is logged, every opt-out is honored in real time, and the FEC file at the end of the quarter writes itself. The campaign moves at the speed of the news cycle, not the speed of a volunteer with a phone and a clipboard.</div>
+                <div class="vertical-tags">
+                    <span class="vertical-tag">Cold Email</span>
+                    <span class="vertical-tag">Voice</span>
+                    <span class="vertical-tag">Compliance</span>
+                </div>
+                <div class="vertical-arrow">&rarr;</div>
             </div>
         </div>
     </div>
@@ -1296,7 +1535,7 @@
     document.querySelectorAll('[data-count]').forEach(el => statObserver.observe(el));
 
     // Scroll-triggered reveals
-    gsap.utils.toArray('.section-header, .service-item, .process-step, .benefit-card, .case-card, .team-card, .faq-item, .stat-item, .logo-strip').forEach((el, i) => {
+    gsap.utils.toArray('.section-header, .vertical-card, .process-step, .benefit-card, .case-card, .team-card, .faq-item, .stat-item, .logo-strip').forEach((el, i) => {
         gsap.from(el, {
             scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' },
             opacity: 0, y: 50, duration: 1, ease: 'power3.out', delay: (i % 4) * 0.1
