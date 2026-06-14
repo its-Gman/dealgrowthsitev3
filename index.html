@@ -624,7 +624,6 @@
          * TEAM
          * ===================================================================== */
         .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); }
-        .team-card:nth-child(7) { grid-column: 1 / -1; justify-content: center; }
         .team-card {
             background: var(--bg); padding: 64px;
             display: flex; align-items: flex-start; gap: 40px;
@@ -644,7 +643,7 @@
         .team-bio { font-size: 15px; line-height: 1.7; color: var(--text-muted); margin-bottom: 18px; }
         .team-social { color: var(--text-dim); text-decoration: none; font-size: 13px; transition: color 0.3s; }
         .team-social:hover { color: var(--accent); }
-        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-card:nth-child(7) { grid-column: 1 / -1; justify-content: flex-start; } }
+        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .team-grid { grid-template-columns: 1fr; } .team-card { padding: 44px 32px; flex-direction: column; align-items: center; text-align: center; } .team-avatar { width: 96px; height: 96px; } }
 
         /* =====================================================================
@@ -671,7 +670,7 @@
         .faq-item.active .faq-toggle::before { transform: rotate(45deg); color: var(--accent); }
         .faq-item.active .faq-toggle { border-color: var(--accent); }
         .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.7s var(--ease-out), margin-top 0.5s; }
-        .faq-item.active .faq-a { max-height: 220px; margin-top: 24px; }
+        .faq-item.active .faq-a { max-height: 320px; margin-top: 24px; }
         .faq-a p { font-size: 15px; line-height: 1.7; color: var(--text-muted); max-width: 640px; }
 
         /* =====================================================================
@@ -1249,6 +1248,24 @@
                 <a href="https://www.linkedin.com/in/jack-m-03349a16/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
             </div>
         </div>
+        <div class="team-card">
+            <div class="team-avatar" style="width:88px;height:88px"><img src="assets/andre%20wilson.png" alt="Andre Wilson" loading="lazy"></div>
+            <div>
+                <div class="team-name" style="font-size:22px">Andre Wilson</div>
+                <div class="team-role">Capital &amp; Growth Advisor</div>
+                <p class="team-bio" style="font-size:14px">Founder of Altima Business Solutions. Secured over $400M in capital for startups and SMBs across banks, alternative lenders, VC, and private equity. Former Prudential investment banker with 20+ years in deal structuring and business scaling.</p>
+                <a href="https://www.linkedin.com/in/andrewilson1/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            </div>
+        </div>
+        <div class="team-card">
+            <div class="team-avatar" style="width:88px;height:88px"><img src="assets/kevin%20brooks.png" alt="Kevin Brooks" loading="lazy"></div>
+            <div>
+                <div class="team-name" style="font-size:22px">Kevin Brooks</div>
+                <div class="team-role">Structured Finance Advisor</div>
+                <p class="team-bio" style="font-size:14px">Former Managing Director and Investment Banker at Merrill Lynch, Pali Capital, and Bradley Woods &amp; Co. 20+ years and over $1B in capital formation across private equity, project finance, structured debt, and M&amp;A.</p>
+                <a href="https://www.linkedin.com/in/kevinedwardbrooks/" class="team-social" target="_blank" rel="noopener">LinkedIn &rarr;</a>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -1278,7 +1295,7 @@
             </div>
             <div class="faq-item" data-faq>
                 <div class="faq-q">What does the investment look like?<span class="faq-toggle"></span></div>
-                <div class="faq-a"><p>Engagements scale from single-workflow builds to full GTM architecture, typically in the $5K to $10K monthly range. We scope precisely during the strategy call and only propose what delivers a clear, measurable return. No long-term lock-in required.</p></div>
+                <div class="faq-a"><p>Fixed price, no surprises. Every engagement gets a clear scope, timeline, and fixed price upfront. No hourly billing, no scope creep, no mystery invoices. Engagements typically start at $5K. Most buildouts land between $10K–$25K. We only propose what delivers a measurable return.</p></div>
             </div>
         </div>
     </div>
